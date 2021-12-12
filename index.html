@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <meta charset="UTF-8">
+
+    <title></title>
+</head>
+<body onload="docReady()">
+<img id="myImage" class="image"   src="image/47378529_536486050149275_8974060236272828416_n.jpg" height="200" width="200"/>
+<button onclick="moveDow()">Dow</button>
+<button onclick="moveUp()">Up</button>
+<button onclick="moveRight()">Right</button>
+<button onclick="moveLeft()">Left</button>
+<script>
+    let image;
+    image = document.getElementById('myImage');
+    function init() {
+        image = document.getElementById('myImage');
+        image.style.position = 'relative';
+        image.style.top = '0px'
+        image.style.left = '0px'
+    }
+    //
+    // window.onload = init; //Không thể onload window.onload vs body.onload cùng lúc
+    init();
+    // document.body.onload = docReady;
+    function moveDow() {
+        // image = document.getElementById('myImage');
+        image.style.top = parseInt(image.style.top) + 10 + 'px';
+    }
+
+    function moveUp() {
+        // image = document.getElementById('myImage');
+        image.style.top = parseInt(image.style.top) - 10 + 'px';
+    }
+
+    function moveRight() {
+        // image = document.getElementById('myImage');
+        image.style.left = parseInt(image.style.left) + 10 + 'px';
+    }
+
+    function moveLeft() {
+        // image = document.getElementById('myImage');
+        image.style.left = parseInt(image.style.left) - 10 + 'px';
+    }
+
+    function moveSelection(evt){
+        console.log('goi ham select: EVT ---> ', evt)
+        console.log('goi ham select', evt.keyCode)
+        switch (evt.keyCode) {
+            case 37:
+                moveLeft();
+                break;
+            case 39:
+                moveRight();
+                break;
+            case 38:
+                moveUp();
+                break;
+            case 40:
+                moveDow();
+                break;
+        }
+    }
+    function docReady() {
+        console.log('goi docReady')
+        window.addEventListener('keydown', moveSelection);
+        console.log('sau an phim')
+    }
+    // $(document).ready(function (){
+    //     docReady();
+    // })
+</script>
+</body>
+</html>
